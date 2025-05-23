@@ -3,12 +3,10 @@ package MiniJava.scanner;
 import MiniJava.errorHandler.ErrorHandler;
 import MiniJava.scanner.token.Token;
 import MiniJava.scanner.type.Type;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import MiniJava.SimpleMatcher.SimpleMatcher;
 
 public class lexicalAnalyzer {
-    private Matcher matcher;
+    private SimpleMatcher matcher;
 
     public lexicalAnalyzer(java.util.Scanner sc) {
         StringBuilder input = new StringBuilder();
@@ -18,8 +16,7 @@ public class lexicalAnalyzer {
         StringBuilder tokenPattern = new StringBuilder();
         for (Type tokenType : Type.values())
             tokenPattern.append(String.format("|(?<%s>%s)", tokenType.name(), tokenType.pattern));
-        Pattern expression = Pattern.compile(tokenPattern.substring(1));
-        matcher = expression.matcher(input.toString());
+        matcher = new SimpleMatcher(tokenPattern.substring(1) ,input.toString() );
     }
 
     public Token getNextToken() {

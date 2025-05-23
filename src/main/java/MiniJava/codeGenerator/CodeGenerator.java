@@ -7,16 +7,15 @@ import MiniJava.semantic.symbol.Symbol;
 import MiniJava.semantic.symbol.SymbolTable;
 import MiniJava.semantic.symbol.SymbolType;
 
-import java.util.Stack;
-
+import MiniJava.SimpleStack.SimpleStack ;
 /**
  * Created by Alireza on 6/27/2015.
  */
 public class CodeGenerator {
     private Memory memory = new Memory();
-    private Stack<Address> ss = new Stack<Address>();
-    private Stack<String> symbolStack = new Stack<>();
-    private Stack<String> callStack = new Stack<>();
+    private SimpleStack<Address> ss = new SimpleStack<Address>();
+    private SimpleStack<String> symbolStack = new SimpleStack<>();
+    private SimpleStack<String> callStack = new SimpleStack<>();
     private SymbolTable symbolTable;
 
     public CodeGenerator() {

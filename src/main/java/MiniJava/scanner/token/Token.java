@@ -1,9 +1,8 @@
 package MiniJava.scanner.token;
 
 import MiniJava.scanner.type.Type;
+import MiniJava.SimpleMatcher.SimpleMatcher;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Token {
     public Type type;
@@ -39,15 +38,16 @@ public class Token {
     }
 
     public static Type getTyepFormString(String s) {
-        Pattern pattern;
-        Matcher matcher;
+
+        SimpleMatcher simpleMatcher;
         for (Type t : Type.values()) {
             if (t.toString().equals(s)) return t;
         }
         for (Type t : Type.values()) {
-            pattern = Pattern.compile(t.pattern);
-            matcher = pattern.matcher(s);
-            if (matcher.matches()) return t;
+            simpleMatcher = new SimpleMatcher(t.pattern , s) ;
+
+
+            if (simpleMatcher.matches()) return t;
         }
 
 //        if (s.equals("class")||s.equals("extends")||s.equals("public")||s.equals("static")||s.equals("void")||s.equals("return")||s.equals("main")||

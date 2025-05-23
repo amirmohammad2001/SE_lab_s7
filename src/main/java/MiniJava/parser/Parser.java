@@ -4,8 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Stack;
-
+import MiniJava.SimpleStack.SimpleStack;
 import MiniJava.Log.Log;
 import MiniJava.codeGenerator.CodeGenerator;
 import MiniJava.errorHandler.ErrorHandler;
@@ -14,13 +13,13 @@ import MiniJava.scanner.token.Token;
 
 public class Parser {
     private ArrayList<Rule> rules;
-    private Stack<Integer> parsStack;
+    private SimpleStack<Integer> parsStack;
     private ParseTable parseTable;
     private lexicalAnalyzer lexicalAnalyzer;
     private CodeGenerator cg;
 
     public Parser() {
-        parsStack = new Stack<Integer>();
+        parsStack = new SimpleStack<>();
         parsStack.push(0);
         try {
             parseTable = new ParseTable(Files.readAllLines(Paths.get("src/main/resources/parseTable")).get(0));

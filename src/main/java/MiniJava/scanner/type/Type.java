@@ -1,8 +1,7 @@
 package MiniJava.scanner.type;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
+import MiniJava.SimpleMatcher.SimpleMatcher;
 /**
  * Created by Alireza on 2015-05-26.
  */
@@ -34,12 +33,12 @@ public enum Type {
     }
 
     public Type getTyepFormString(String s) {
-        Pattern pattern;
-        Matcher matcher;
+
+        SimpleMatcher simpleMatcher;
         for (Type t : values()) {
-            pattern = Pattern.compile(t.pattern);
-            matcher = pattern.matcher(s);
-            if (matcher.matches())
+            simpleMatcher = new SimpleMatcher(t.pattern , s);
+
+            if (simpleMatcher.matches())
                 return t;
         }
 
