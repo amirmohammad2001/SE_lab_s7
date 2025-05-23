@@ -23,6 +23,30 @@ public class CodeGenerator {
     private SymbolTable symbolTable;
     private HashMap<Integer , Action> actionMap;
 
+    public Memory getMemory() {
+        return memory;
+    }
+
+    public SimpleStack<Address> getSs() {
+        return ss;
+    }
+
+    public SimpleStack<String> getSymbolStack() {
+        return symbolStack;
+    }
+
+    public SimpleStack<String> getCallStack() {
+        return callStack;
+    }
+
+    public SymbolTable getSymbolTable() {
+        return symbolTable;
+    }
+
+    public HashMap<Integer , Action> grtActionMap() {
+        return actionMap;
+    }
+
     public CodeGenerator() {
         symbolTable = new SymbolTable(memory);
         actionMap = new HashMap<Integer , Action>();
