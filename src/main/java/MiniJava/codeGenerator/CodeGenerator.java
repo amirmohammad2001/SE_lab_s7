@@ -302,7 +302,8 @@ public class CodeGenerator {
         Address s2 = ss.pop();
         Address s1 = ss.pop();
         if (s1.varType != expectedType || s2.varType != expectedType) {
-            ErrorHandler.printError("Operands must be of type " + expectedType);
+            throw new IllegalArgumentException("Operands must be of type " + expectedType);
+            // ErrorHandler.printError("Operands must be of type " + expectedType);
         }
         memory.add3AddressCode(op, s1, s2, temp);
         ss.push(temp);
